@@ -1,0 +1,44 @@
+# Gradle
+.gradle/
+build/
+!build/libs/*.jar
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Frontend
+frontend/
+
+# Documentation
+*.md
+!README.md
+
+# CI/CD
+.github/
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Test
+src/test/
+
+# Docker
+docker-compose*.yml
+Dockerfile*

@@ -1,0 +1,10 @@
+{
+  "build": {
+    "command": "npm install && npm run build",
+    "directory": ".next",
+    "nodeVersion": "20"
+  },
+  "root": "frontend",
+  "framework": "nextjs"
+}
+
