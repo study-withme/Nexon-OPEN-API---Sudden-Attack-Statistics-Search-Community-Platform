@@ -6,10 +6,10 @@ services:
     container_name: jokerweb-mariadb
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-Xmflslxl2@}
       MYSQL_DATABASE: ${DB_NAME:-jokercommunity}
       MYSQL_USER: ${DB_USERNAME:-appuser}
-      MYSQL_PASSWORD: ${DB_PASSWORD:-}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-apppass}
     ports:
       - "${DB_PORT:-3306}:3306"
     volumes:
