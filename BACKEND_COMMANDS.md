@@ -233,7 +233,7 @@ $env:DB_URL="jdbc:mariadb://localhost:3306/jokercommunity"
 $env:FTP_HOST="localhost"
 $env:FTP_PORT="21"
 $env:FTP_USERNAME="jokerweb"
-$env:FTP_PASSWORD="jokerweb123"
+$env:FTP_PASSWORD="your_ftp_password"
 $env:FTP_BASE_URL="http://localhost:8080/files"
 
 # 실행
@@ -253,7 +253,7 @@ export DB_URL="jdbc:mariadb://localhost:3306/jokercommunity"
 export FTP_HOST="localhost"
 export FTP_PORT="21"
 export FTP_USERNAME="jokerweb"
-export FTP_PASSWORD="jokerweb123"
+export FTP_PASSWORD="your_ftp_password"
 export FTP_BASE_URL="http://localhost:8080/files"
 
 # 실행

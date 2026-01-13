@@ -64,19 +64,29 @@ const getBaseURL = (): string => {
       
       // 클라우드타입 도메인 패턴 감지 (fallback)
       if (hostname.includes("cloudtype.app")) {
-        // 기본 백엔드 URL (프로덕션)
-        const url = "https://port-0-backend-m1n83z8hf2dab373.sel4.cloudtype.app/api";
+        // 환경 변수에서 백엔드 URL 가져오기
+        const envBackendUrl = process.env.NEXT_PUBLIC_API_BASE;
+        if (envBackendUrl) {
+          if (process.env.NODE_ENV === 'development') {
+            console.log("[API] Using environment variable:", envBackendUrl);
+          }
+          return envBackendUrl;
+        }
+        // 환경 변수가 없으면 호스트명 기반으로 추론
+        const backendHostname = hostname.replace("frontends", "backend");
+        const url = `${protocol}//${backendHostname}/api`;
         if (process.env.NODE_ENV === 'development') {
-          console.log("[API] Using Cloudtype fallback:", url);
+          console.log("[API] Inferred from hostname:", url);
         }
         return url;
       }
       
       // 기타 프로덕션 환경 (도메인이 있는 경우)
       if (process.env.NODE_ENV === 'development') {
-        console.warn("[API] Production environment detected but no backend URL found. Using Cloudtype default.");
+        console.warn("[API] Production environment detected but no backend URL found. Please set NEXT_PUBLIC_API_BASE environment variable.");
       }
-      return "https://port-0-backend-m1n83z8hf2dab373.sel4.cloudtype.app/api";
+      // 환경 변수가 없으면 에러를 발생시키거나 기본값 사용
+      return process.env.NEXT_PUBLIC_API_BASE || "/api";
     }
   }
   

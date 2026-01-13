@@ -27,8 +27,8 @@ WORKDIR /app
 # Create non-root user for security
 RUN addgroup -S spring && adduser -S spring -G spring
 
-# Copy JAR from build stage
-COPY --from=build /app/build/libs/*.jar app.jar
+# Copy JAR from build stage (명시적 파일명 사용)
+COPY --from=build /app/build/libs/jokerweb-0.0.1-SNAPSHOT.jar app.jar
 
 # Install curl for health checks
 RUN apk add --no-cache curl
