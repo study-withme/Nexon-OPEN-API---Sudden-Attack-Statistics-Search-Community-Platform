@@ -1,0 +1,44 @@
+name: Cloudtype Auto Restart
+
+on:
+  schedule:
+    # 매일 오전 8시 (KST) = UTC 23시 (전날)
+    - cron: '0 23 * * *'
+  workflow_dispatch: # 수동 실행도 가능하도록
+
+jobs:
+  restart-cloudtype:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create empty commit to trigger redeploy
+        run: |
+          echo "Creating empty commit to trigger Cloudtype redeploy..."
+          git commit --allow-empty -m "Auto restart: $(date -u +'%Y-%m-%d %H:%M:%S UTC') [skip ci]"
+          
+      - name: Push to trigger redeploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
+          git push origin HEAD:${{ github.ref }}
+          
+      - name: Alternative - Restart via API (if needed)
+        if: false  # API 방법을 사용하려면 true로 변경
+        env:
+          CLOUDTYPE_API_KEY: ${{ secrets.CLOUDTYPE_API_KEY }}
+          CLOUDTYPE_SERVICE_ID: ${{ secrets.CLOUDTYPE_SERVICE_ID }}
+        run: |
+          echo "Restarting Cloudtype service via API..."
+          curl -X POST \
+            -H "Authorization: Bearer $CLOUDTYPE_API_KEY" \
+            -H "Content-Type: application/json" \
+            "https://api.cloudtype.io/v1/services/$CLOUDTYPE_SERVICE_ID/restart"
+

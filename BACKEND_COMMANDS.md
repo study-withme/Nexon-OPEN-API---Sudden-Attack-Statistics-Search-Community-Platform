@@ -233,7 +233,7 @@ $env:DB_URL="jdbc:mariadb://localhost:3306/jokercommunity"
 $env:FTP_HOST="localhost"
 $env:FTP_PORT="21"
 $env:FTP_USERNAME="jokerweb"
-$env:FTP_PASSWORD="your_ftp_password"
+$env:FTP_PASSWORD="jokerweb123"
 $env:FTP_BASE_URL="http://localhost:8080/files"
 
 # 실행
@@ -253,7 +253,7 @@ export DB_URL="jdbc:mariadb://localhost:3306/jokercommunity"
 export FTP_HOST="localhost"
 export FTP_PORT="21"
 export FTP_USERNAME="jokerweb"
-export FTP_PASSWORD="your_ftp_password"
+export FTP_PASSWORD="jokerweb123"
 export FTP_BASE_URL="http://localhost:8080/files"
 
 # 실행
@@ -270,7 +270,6 @@ export FTP_BASE_URL="http://localhost:8080/files"
 ---
 
 **팁**: `.\gradlew tasks`로 사용 가능한 모든 명령어를 확인할 수 있습니다!
-
 
 
 
