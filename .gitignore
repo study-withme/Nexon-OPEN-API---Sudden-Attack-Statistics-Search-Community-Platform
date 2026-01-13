@@ -88,3 +88,16 @@ scripts/cleanup-*.sql
 run-utf8.ps1
 run-*.ps1
 run-*.sh
+
+# 중복/불필요한 배포 설정 파일
+cloudflare-pages.json
+_cloudflare_build.sh
+cloudtype.yml
+scripts/deploy.sh
+
+# 기본 템플릿 파일
+frontend/README.md
+frontend/vercel.json
+
+# 이미 적용된 문서
+API_OPTIMIZATION_SUMMARY.md
